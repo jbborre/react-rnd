@@ -114,6 +114,7 @@ export interface Props {
     x: number;
     y: number;
   };
+  rotate?: number;
   size?: Size;
   resizeGrid?: Grid;
   bounds?: string;
@@ -534,6 +535,7 @@ export class Rnd extends React.Component<Props, State> {
       onResize,
       onResizeStop,
       onDragStart,
+      rotate,
       onDrag,
       onDragStop,
       resizeHandleStyles,
@@ -574,6 +576,7 @@ export class Rnd extends React.Component<Props, State> {
         onMouseDown={onMouseDown}
         onStart={this.onDragStart}
         onDrag={this.onDrag}
+        rotate={rotate}
         onStop={this.onDragStop}
         axis={dragAxis}
         disabled={disableDragging}

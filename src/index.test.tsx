@@ -126,7 +126,7 @@ test("should call onDrag when dragging", async t => {
   t.is(onDrag.callCount, 1);
   t.is(onDrag.firstCall.args[1].x, 600);
   t.is(onDrag.firstCall.args[1].y, 620);
-  t.not((rnd.getDOMNode().getAttribute("style") || "").indexOf("transform: translate(400px, 420px)"), -1);
+  t.not((rnd.getDOMNode().getAttribute("style") || "").indexOf("transform: translate(400px, 420px) rotate(0deg)"), -1);
 });
 
 test("should call onDragStop when drag stop", async t => {
@@ -154,7 +154,7 @@ test("should dragging disabled when axis equals none", async t => {
     .simulate("mousedown", { clientX: 0, clientY: 0 });
   mouseMove(200, 220);
   t.is(onDrag.callCount, 1);
-  t.not((rnd.getDOMNode().getAttribute("style") || "").indexOf("transform: translate(100px, 100px)"), -1);
+  t.not((rnd.getDOMNode().getAttribute("style") || "").indexOf("transform: translate(100px, 100px) rotate(0deg)"), -1);
 });
 
 test("should enable dragging only x when axis equals x", async t => {
@@ -168,7 +168,7 @@ test("should enable dragging only x when axis equals x", async t => {
     .simulate("mousedown", { clientX: 0, clientY: 0 });
   mouseMove(200, 220);
   t.is(onDrag.callCount, 1);
-  t.not((rnd.getDOMNode().getAttribute("style") || "").indexOf("transform: translate(308px, 100px)"), -1);
+  t.not((rnd.getDOMNode().getAttribute("style") || "").indexOf("transform: translate(308px, 100px) rotate(0deg)"), -1);
 });
 
 test("should enable dragging only y when axis equals y", async t => {
@@ -182,7 +182,7 @@ test("should enable dragging only y when axis equals y", async t => {
     .simulate("mousedown", { clientX: 0, clientY: 0 });
   mouseMove(200, 220);
   t.is(onDrag.callCount, 1);
-  t.not((rnd.getDOMNode().getAttribute("style") || "").indexOf("transform: translate(100px, 328px)"), -1);
+  t.not((rnd.getDOMNode().getAttribute("style") || "").indexOf("transform: translate(100px, 328px) rotate(0deg)"), -1);
 });
 
 test("should enable dragging both x & y when axis equals both", async t => {
@@ -196,7 +196,7 @@ test("should enable dragging both x & y when axis equals both", async t => {
     .simulate("mousedown", { clientX: 0, clientY: 0 });
   mouseMove(200, 220);
   t.is(onDrag.callCount, 1);
-  t.not((rnd.getDOMNode().getAttribute("style") || "").indexOf("transform: translate(308px, 328px)"), -1);
+  t.not((rnd.getDOMNode().getAttribute("style") || "").indexOf("transform: translate(308px, 328px) rotate(0deg)"), -1);
 });
 
 test("should snap when dragging smaller than threshold", async t => {
@@ -208,7 +208,7 @@ test("should snap when dragging smaller than threshold", async t => {
     .at(0)
     .simulate("mousedown", { clientX: 0, clientY: 0 });
   mouseMove(14, 49);
-  t.not((rnd.getDOMNode().getAttribute("style") || "").indexOf("transform: translate(108px, 108px)"), -1);
+  t.not((rnd.getDOMNode().getAttribute("style") || "").indexOf("transform: translate(108px, 108px) rotate(0deg)"), -1);
 });
 
 test("should snap when dragging larger than threshold", async t => {
@@ -220,7 +220,7 @@ test("should snap when dragging larger than threshold", async t => {
     .at(0)
     .simulate("mousedown", { clientX: 0, clientY: 0 });
   mouseMove(15, 50);
-  t.not((rnd.getDOMNode().getAttribute("style") || "").indexOf("transform: translate(138px, 208px)"), -1);
+  t.not((rnd.getDOMNode().getAttribute("style") || "").indexOf("transform: translate(138px, 208px) rotate(0deg)"), -1);
 });
 
 test("should limit position by parent bounds", async t => {
@@ -244,7 +244,7 @@ test("should limit position by parent bounds", async t => {
         .childAt(0)
         .getDOMNode()
         .getAttribute("style") || ""
-    ).indexOf("transform: translate(708px, 508px)"),
+    ).indexOf("transform: translate(708px, 508px) rotate(0deg)"),
     -1,
   );
 });
@@ -275,7 +275,7 @@ test("should limit position by selector bounds", async t => {
         .childAt(0)
         .getDOMNode()
         .getAttribute("style") || ""
-    ).indexOf("translate(908px, 708px)"),
+    ).indexOf("translate(908px, 708px) rotate(0deg)"),
     -1,
   );
 });
